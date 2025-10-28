@@ -1,0 +1,17 @@
+<div class="item-container">
+  <div class="item-card">
+    <h2>Log In</h2>
+    <% if @login_error %>
+      <p style="color: red;"><%= @login_error %></p>
+    <% end %>
+    <form action="/login" method="post">
+      <label>Username:</label>
+      <input type="text" name="username" required><br>
+      <label>Password:</label>
+      <input type="password" name="password" required><br>
+      <input type="submit" value="Log in">
+    </form>
+    <p style="margin-top:10px;">No account?<a href="/signup"> Create one</a></p>
+
+  </div>
+</div>

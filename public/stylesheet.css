@@ -1,0 +1,333 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+h1, h2, h3 {
+  color: #2b3a67;
+}
+
+a {
+  text-decoration: none;
+  color: #0077cc;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid #eee;
+  margin: 15px 0;
+}
+
+nav {
+  background-color: #748CAB;
+  padding: 10px 0;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav a {
+  color: #fff;
+  margin: 0 10px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  background-color: #4c5a8a;
+}
+
+main {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.batch-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background-color: #f4f6fb;
+  padding: 60px 20px;
+  box-sizing: border-box;
+}
+
+.batch-card {
+  background-color: white;
+  width: 70%;
+  max-width: 900px;
+  padding: 40px 60px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.batch-card {
+  width: 800px;
+}
+
+.batch-card h2 {
+  text-align: center;
+  font-size: 26px;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.batch-card label {
+  display: block;
+  font-weight: bold;
+  margin-top: 12px;
+  color: #444;
+}
+
+.batch-card input[type="text"],
+.batch-card input[type="number"],
+.batch-card input[type="password"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.item-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: nowrap;
+}
+
+.item-row label {
+  font-weight: bold;
+  color: #333;
+  width: 100px;
+  text-align: right;
+}
+
+.item-row input[type="text"],
+.item-row input[type="number"] {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  height: 34px;
+}
+
+.item-row button {
+  margin-left: 10px;
+  padding: 6px 10px;
+  font-size: 14px;
+  background-color: #f8f9fa;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.item-row button:hover {
+  background-color: #e9ecef;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.item-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background-color: #f5f6fa;
+}
+
+.item-card {
+  background-color: white;
+  padding: 40px 50px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 400px;
+  text-align: left;
+}
+
+.item-card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.item-card label {
+  display: block;
+  font-weight: bold;
+  margin-top: 12px;
+  color: #444;
+}
+
+.item-card input[type="text"],
+.item-card input[type="number"],
+.item-card input[type="password"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.item-card input[type="submit"] {
+  width: 100%;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.item-card input[type="submit"]:hover {
+  background-color: #005fa3;
+}
+
+.message {
+  color: green;
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.inventory-table{
+  width: 60%;
+  margin: 30px auto;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.inventory-table th,
+.inventory-table td {
+  padding: 12px 18px;
+  text-align: left;
+}
+
+.inventory-table th {
+  background-color: #0077cc;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.inventory-table tr:nth-child(even) {
+  background-color: #f2f6fa;
+}
+
+.inventory-table tr:hover {
+  background-color: #e6f0ff;
+  transition: 0.2s ease-in-out;
+}
+
+.inventory-table td {
+  border-bottom: 1px solid #ddd;
+  font-size: 15px;
+}
+
+.inventoryList h2 {
+  text-align: center;
+  color: #333;
+  margin-top: 40px;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 6px;
+}
+
+.edit-btn {
+  color: #3498db;
+}
+
+.edit-btn:hover {
+  color: #2980b9;
+}
+
+.delete-btn {
+  color: #dc3545;
+}
+
+.delete-btn:hover {
+  color: #a71d2a;
+}
+
+form {
+  display: inline;
+}
+
+.form-actions {
+  text-align: left;         /* 按钮靠左 */
+  margin-top: 10px;
+}
+
+.add-btn {
+  padding: 6px 12px;
+  font-size: 15px;
+  background-color: #f8f9fa;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background-color: #e9ecef;
+}
+
+.form-submit {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.form-submit input[type="submit"] {
+  width: 60%;
+  background-color: #2f78d1;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.form-submit input[type="submit"]:hover {
+  background-color: #1e63b7;
+}
+
+
+
+form button.action-btn {
+  font-family: inherit;
+  line-height: normal;
+}

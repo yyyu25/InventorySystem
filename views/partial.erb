@@ -1,0 +1,12 @@
+<table class="inventory-table">
+  <tr>
+    <th>item</th>
+    <th>quantity</th>
+  </tr>
+  <% @items.each_with_index do |item, i|%>
+  <tr>
+    <td><%= item %></td>
+    <td><%= @quantities[i] %></td>
+  </tr>
+  <% end%>
+</table>

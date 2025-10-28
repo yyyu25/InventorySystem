@@ -1,0 +1,23 @@
+<div class="inventoryList">
+  <h2 class="inventory_header">Current Inventory</h2>
+  <table class="inventory-table">
+    <tr>
+      <th>ITEM</th>
+      <th>QUANTITY</th>
+      <th>ACTION</th>
+    </tr>
+    <% @items.each_with_index do |item, i|%>
+    <tr>
+      <td><%= item %></td>
+      <td><%= @quantities[i] %></td>
+      <td>
+        <a href="/edit/<%= item%>" class="action-btn edit-btn">EDIT</a> |
+        <form action="/delete/<%= item %>" method="post" style="display:inline;"
+          onsubmit="return confirm('Are you sure you want to delete <%= item %>?');">
+          <button class="action-btn delete-btn">DELETE</button>
+        </form>
+      </td>
+    </tr>
+    <% end%>
+  </table>
+</div>

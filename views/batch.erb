@@ -1,0 +1,45 @@
+<div class="batch-container">
+  <div class="batch-card">
+
+    <h2>Batch Add New Items</h2>
+    <% if @message %>
+      <p style="color: green;"><%= @message %></p>
+    <% end %>
+
+    <form method="post" action="/batch">
+      <div id="items-container">
+        <div class="item-row">
+          <label>Item Name:</label><input type="text" name="batch_item[]" required>
+          <label>Quantity:</label><input type="number" name="batch_quantity[]" min = "1" required>
+          <button type="button" class="remove-btn hidden" onclick="this.parentElement.remove()">Remove</button>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="add-btn" type="button" name="button" onclick="addItem()">Add one more item</button>
+      </div>
+
+      <div class="form-submit">
+        <input type="submit" value="Submit All">
+      </div>
+
+    </form>
+
+    <script>
+      function addItem() {
+        const newRow = document.createElement('div');
+        newRow.classList.add('item-row');
+        newRow.innerHTML = `
+          <label>Item Name:</label>
+          <input type="text" name="batch_item[]" required>
+          <label>Quantity:</label>
+          <input type="number" name="batch_quantity[]" min="1" required>
+        <button type="button" onclick="this.parentElement.remove()">Remove</button>
+      `;
+        document.getElementById('items-container').appendChild(newRow);
+      }
+    </script>
+
+  </div>
+
+</div>

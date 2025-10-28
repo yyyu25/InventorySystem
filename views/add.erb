@@ -1,0 +1,18 @@
+<div class="item-container">
+  <div class="item-card">
+
+    <h2>Add A New Item</h2>
+    <% if @message %>
+      <p style="color: green;"><%= @message %></p>
+    <% end %>
+
+    <form method="post" action="/add">
+      <label>Item Name:</label>
+      <input type="text" name="item" required>
+      <label>Quantity:</label>
+      <input type="number" name="quantity" min = "1" required>
+      <input type="submit" value="submit">
+    </form>
+  </div>
+
+</div>
