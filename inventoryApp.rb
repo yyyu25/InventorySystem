@@ -7,7 +7,13 @@ require './models/item'
 
 enable :sessions
 set :session_secret, SecureRandom.hex(64)
-set :database, { adapter: "sqlite3", database: "db/mydb.sqlite" }
+
+# Use PostgreSQL on Render, SQLite locally
+if ENV['RACK_ENV'] == 'production'
+  set :database, ENV['DATABASE_URL']
+else
+  set :database, { adapter: "sqlite3", database: "db/mydb.sqlite" }
+end
 
 puts "Connected to: #{ActiveRecord::Base.connection_db_config.database}"
 
