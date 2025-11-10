@@ -71,7 +71,7 @@ post '/batch' do
       exist_item = Item.find_by(itemname: item_name)
       u = units[idx] || 0
       if exist_item
-        exist_item.update(quantity: exist_item.quantity.to_i + qty, unit: exist_item.unit)
+        exist_item.update(quantity: exist_item.quantity.to_i + qty, unit: exis_item.unit)
       else
         Item.create(itemname: item_name, quantity: qty, unit: u)
       end
@@ -125,14 +125,13 @@ end
 
 post '/batch_edit' do
     require_login!
-    itemnames = params[:batch_item] || []
-    new_quantities = params[:batch_quantity] || []
-    units = params[:batch_unit] || []
+    itemnames = params[:itemnames] || []
+    new_quantities = params[:new_quantities] || []
 
-    itemnames.zip(new_quantities, units).each do |name, qty, u|
+    itemnames.zip(new_quantities).each do |name, qty|
       item = Item.find_by(itemname: name)
-      item.update(quantity: qty, unit: u) if item
-    end
+      item.update(quantity: qty) if item
+  end
 
   redirect '/view?message=Batch+update+successfully.'
 end

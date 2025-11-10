@@ -1,0 +1,61 @@
+<div class="batch-container">
+  <div class="batch-card">
+    <h2>Edit Your Items</h2>
+    <!--
+    <form method="post" action="/batch_edit">
+        <% @items.each do |item|%>
+            <div id="items-container">
+                <div class="item-row">
+                    <label>Item Name:</label>
+                    <input type="text" style="height: 20px;" name="itemnames[]" value="<%= item.itemname%>" readonly>
+                    <label>Quantity:</label>
+                    <input type="number" style="height: 20px;" name="new_quantities[]" min = "1" value="<%= item.quantity%>" required>
+                </div>
+            </div>
+        <% end %>
+        <div class="form-submit" style="display: flex; justify-content: center; align-items: center; text-align: center; margin-top: 20px;">
+            <input type="submit" value="Update" style="width:150px;">
+        </div>
+    </form>
+    !-->
+    <form method="post" action="/batch_edit"
+      style="width: 600px; margin: 30px auto; background: #fff; padding: 25px 30px; border-radius: 8px; font-family: system-ui, sans-serif;">
+        <% @items.each do |item|%>
+            <div class="item-row" style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: nowrap;">
+
+                <label style="min-width: 50px; font-weight: 600; margin-bottom: 20px;">Item Name:</label>
+                <input type="text" name="batch_item[]" required value="<%= item.itemname%>" readonly
+                    style="height: 32px; width: 100px; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px;">
+
+                <label style="min-width: 50px; font-weight: 600; margin-bottom: 20px;">Quantity:</label>
+                <input type="number" name="batch_quantity[]" min="1" required value="<%= item.quantity%>"
+                    style="height: 32px; width: 100px; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px;">
+
+                <label style="min-width: 50px; font-weight: 600; display: none;">Unit:</label>
+                <select name="batch_unit[]" required
+                        style="height: 42px; width: 100px; margin-bottom: 10px; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px; line-height: 1;">
+                <option value="">--Select--</option>
+                <option value="piece"  <%= "selected" if item.unit == "piece" %>>piece</option>
+                <option value="box"    <%= "selected" if item.unit == "box" %>>box</option>
+                <option value="pack"   <%= "selected" if item.unit == "pack" %>>pack</option>
+                <option value="bottle" <%= "selected" if item.unit == "bottle" %>>bottle</option>
+                <option value="bag"    <%= "selected" if item.unit == "bag" %>>bag</option>
+                <option value="kg"     <%= "selected" if item.unit == "kg" %>>kg</option>
+                <option value="g"      <%= "selected" if item.unit == "g" %>>g</option>
+                <option value="liter"  <%= "selected" if item.unit == "liter" %>>liter</option>
+                <option value="set"    <%= "selected" if item.unit == "set" %>>set</option>
+                <option value="roll"   <%= "selected" if item.unit == "roll" %>>roll</option>
+                </select>
+            </div>
+        <% end %>
+
+
+      <div style="text-align:center; margin-top: 15px;">
+        <input type="submit" value="Update"
+              style="background-color:#1565c0; color:white; border:none; border-radius:4px;
+                      padding:8px 14px; cursor:pointer; font-weight:500;">
+      </div>
+    </form>
+  </div>
+
+</div>

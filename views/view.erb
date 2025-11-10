@@ -1,23 +1,58 @@
-<div class="inventoryList">
-  <h2 class="inventory_header">Current Inventory</h2>
-  <table class="inventory-table">
-    <tr>
-      <th>ITEM</th>
-      <th>QUANTITY</th>
-      <th>ACTION</th>
-    </tr>
-    <% @items.each_with_index do |item, i|%>
-    <tr>
-      <td><%= item %></td>
-      <td><%= @quantities[i] %></td>
-      <td>
-        <a href="/edit/<%= item%>" class="action-btn edit-btn">EDIT</a> |
-        <form action="/delete/<%= item %>" method="post" style="display:inline;"
-          onsubmit="return confirm('Are you sure you want to delete <%= item %>?');">
-          <button class="action-btn delete-btn">DELETE</button>
-        </form>
-      </td>
-    </tr>
-    <% end%>
-  </table>
+<div class="batch-container">
+  <div class="batch-card">
+    <h2 class="inventory_header">Current Inventory</h2>
+    <% if @items && @items.any?  %>
+      <form method="get" style="width: 600px; margin: 30px auto; background: #fff; padding: 25px 30px; border-radius: 8px; font-family: system-ui, sans-serif;">
+        <table class="inventory-table" style="width: 600px;">
+          <tr>
+            <th></th>
+            <th>ITEM</th>
+            <th>QUANTITY</th>
+            <th>UNIT</th>
+            <th>ACTION</th>
+          </tr>
+          <% @items.each do |item|%>
+          <tr>
+            <td>
+                <input type="checkbox" name="selected_items[]" value="<%= item.itemname %>">
+            </td>
+            <td><%= item.itemname %></td>
+            <td><%= item.quantity %></td>
+            <td><%= item.unit %></td>
+            <td>
+              <a href="/edit/<%= item.itemname%>" class="action-btn edit-btn">EDIT</a> |
+              <form action="/delete/<%= item.itemname %>" method="post" style="display:inline;"
+                onsubmit="return confirm('Are you sure you want to delete <%= item.itemname %>?');">
+                <button class="action-btn delete-btn">DELETE</button>
+              </form>
+            </td>
+          </tr>
+          <% end%>
+        </table>
+        <div style="margin-top: 20px; display: flex; justify-content:center; gap: 20px;">
+          <button type="submit"
+                  formaction="/batch_edit"
+                  formmethod="get"
+                  style="width: 130px; padding: 6px 12px; border: none; background-color: #0da3ee; color: white; border-radius: 4px; cursor: pointer;">
+            BATCH EDIT
+          </button>
+          <button type="submit"
+                  formaction="/batch_delete"
+                  formmethod="post"
+                  onclick="return confirm('Are you sure you want to delete selected items?');"
+                  style="width: 130px; padding: 6px 12px; border: none; background-color: #f44336; color: white; border-radius: 4px; cursor: pointer;">
+            BATCH DELETE
+          </button>
+        </div>
+      </form>
+      
+    <% else %>
+      <div style="display: flex; justify-content: flex-start; align-items: center; padding-top: 30px; height: 200px; flex-direction: column; ">
+        <p>Inventory is empty now.</p>
+        <div style="display: flex; gap: 8px;">
+          <a href="/batch">Add Some</a>
+    </div>
+      </div>
+    <% end %>
+  </div>
 </div>

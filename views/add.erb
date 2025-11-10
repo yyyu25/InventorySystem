@@ -2,15 +2,36 @@
   <div class="item-card">
 
     <h2>Add A New Item</h2>
-    <% if @message %>
-      <p style="color: green;"><%= @message %></p>
-    <% end %>
 
     <form method="post" action="/add">
       <label>Item Name:</label>
-      <input type="text" name="item" required>
-      <label>Quantity:</label>
-      <input type="number" name="quantity" min = "1" required>
+      <input type="text" style="height: 20px;" name="item" required>
+     <div style="display: flex; align-items: center; gap: 20px;">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <label for="quantity" style="font-weight: bold; margin: 0;">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" min="1" required
+           style="height: 32px; width: 150px; padding: 4px 8px;">
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <label for="unit" style="font-weight: bold; margin: 0;">Unit:</label>
+    <select id="unit" name="unit" required
+            style="height: 36px; width: 160px; padding: 4px 8px;">
+      <option value="">--Select Unit--</option>
+      <option value="piece">piece</option>
+      <option value="box">box</option>
+      <option value="pack">pack</option>
+      <option value="bottle">bottle</option>
+      <option value="bag">bag</option>
+      <option value="kg">kg</option>
+      <option value="g">g</option>
+      <option value="liter">liter</option>
+      <option value="set">set</option>
+      <option value="roll">roll</option>
+    </select>
+  </div>
+</div>
+      
       <input type="submit" value="submit">
     </form>
   </div>

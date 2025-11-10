@@ -1,0 +1,10 @@
+require 'active_record'
+
+ActiveRecord::Base.establish_connection(
+    adapter: 'sqlite3',
+    database: 'mydb.sqlite'
+)
+
+require_relative 'migration/202511050959_create_table'
+
+CreateUsers.migrate(:up)

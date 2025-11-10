@@ -1,28 +1,59 @@
 <div class="batch-container">
   <div class="batch-card">
 
-    <h2>Batch Add New Items</h2>
+    <h2>Add Items In Batch</h2>
     <% if @message %>
       <p style="color: green;"><%= @message %></p>
     <% end %>
 
-    <form method="post" action="/batch">
+    <form method="post" action="/batch"
+      style="width: 600px; margin: 30px auto; background: #fff; padding: 25px 30px; border-radius: 8px; font-family: system-ui, sans-serif;">
+
       <div id="items-container">
-        <div class="item-row">
-          <label>Item Name:</label><input type="text" name="batch_item[]" required>
-          <label>Quantity:</label><input type="number" name="batch_quantity[]" min = "1" required>
-          <button type="button" class="remove-btn hidden" onclick="this.parentElement.remove()">Remove</button>
+        <div class="item-row" style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: nowrap;">
+
+          <label style="min-width: 50px; font-weight: 600; margin-bottom: 20px;">Item Name:</label>
+          <input type="text" name="batch_item[]" required
+                style="height: 32px; width: 100px; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px;">
+
+          <label style="min-width: 50px; font-weight: 600; margin-bottom: 20px;">Quantity:</label>
+          <input type="number" name="batch_quantity[]" min="1" required
+                style="height: 32px; width: 100px; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px;">
+
+          <label style="min-width: 50px; font-weight: 600; display: none;">Unit:</label>
+          <select name="batch_unit[]" required
+                  style="height: 42px; width: 100px; margin-bottom: 10px; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px; line-height: 1;">
+            <option value="">--Select--</option>
+            <option value="piece">piece</option>
+            <option value="box">box</option>
+            <option value="pack">pack</option>
+            <option value="bottle">bottle</option>
+            <option value="bag">bag</option>
+            <option value="kg">kg</option>
+            <option value="g">g</option>
+            <option value="liter">liter</option>
+            <option value="set">set</option>
+            <option value="roll">roll</option>
+          </select>
+
+          <button type="button"
+          onclick="removeItem(this)"
+          style="background:none; border:none; color:#d9534f; font-weight:bold; cursor:pointer;">
+            ✕
+          </button>
         </div>
       </div>
 
-      <div class="form-actions">
-        <button class="add-btn" type="button" name="button" onclick="addItem()">Add one more item</button>
+      <div style="text-align:center; margin-top: 15px;">
+        <button type="button" onclick="addItem()"
+                style="background-color:#0da3ee; color:white; border:none; border-radius:4px;
+                      padding:8px 14px; cursor:pointer; font-weight:500;">
+          Add one more item
+        </button>
+        <input type="submit" value="Submit All"
+              style="background-color:#1565c0; color:white; border:none; border-radius:4px;
+                      padding:8px 14px; cursor:pointer; font-weight:500;">
       </div>
-
-      <div class="form-submit">
-        <input type="submit" value="Submit All">
-      </div>
-
     </form>
 
     <script>
@@ -30,16 +61,54 @@
         const newRow = document.createElement('div');
         newRow.classList.add('item-row');
         newRow.innerHTML = `
-          <label>Item Name:</label>
-          <input type="text" name="batch_item[]" required>
-          <label>Quantity:</label>
-          <input type="number" name="batch_quantity[]" min="1" required>
-        <button type="button" onclick="this.parentElement.remove()">Remove</button>
+          <div class="item-row" style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: nowrap;">
+
+            <label style="min-width: 50px; font-weight: 600; margin-bottom: 20px;">Item Name:</label>
+            <input type="text" name="batch_item[]" required
+                  style="height: 32px; width: 100px; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px;">
+
+            <label style="min-width: 50px; font-weight: 600; margin-bottom: 20px;">Quantity:</label>
+            <input type="number" name="batch_quantity[]" min="1" required
+                  style="height: 32px; width: 100px; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px;">
+
+            <label style="min-width: 50px; font-weight: 600; display: none;">Unit:</label>
+            <select name="batch_unit[]" required
+                    style="height: 42px; width: 100px; margin-bottom: 10px; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px; line-height: 1;">
+              <option value="">--Select--</option>
+              <option value="piece">piece</option>
+              <option value="box">box</option>
+              <option value="pack">pack</option>
+              <option value="bottle">bottle</option>
+              <option value="bag">bag</option>
+              <option value="kg">kg</option>
+              <option value="g">g</option>
+              <option value="liter">liter</option>
+              <option value="set">set</option>
+              <option value="roll">roll</option>
+            </select>
+
+            <button type="button"
+                    onclick="this.parentElement.remove()"
+                    style="background:none; border:none; color:#d9534f; font-weight:bold; cursor:pointer;">
+              ✕
+            </button>
+          </div>
       `;
         document.getElementById('items-container').appendChild(newRow);
       }
-    </script>
+      
+      function removeItem(btn) {
+        const container = document.getElementById('items-container');
+        const rows = container.querySelectorAll('.item-row');
 
+        if (rows.length > 1) {
+          btn.parentElement.remove();
+        } else {
+          alert('At least one item must remain.');
+        }
+      }
+    </script>
+ 
   </div>
 
 </div>

@@ -1,12 +1,14 @@
 <table class="inventory-table">
   <tr>
-    <th>item</th>
-    <th>quantity</th>
+    <th>ITEM</th>
+    <th>QUANTITY</th>
+    <th>UNIT</th>
   </tr>
-  <% @items.each_with_index do |item, i|%>
+  <% @items.each do |item|%>
   <tr>
-    <td><%= item %></td>
-    <td><%= @quantities[i] %></td>
+    <td><%= item.itemname %></td>
+    <td><%= item.quantity %></td>
+    <td><%= item.unit%></td>
   </tr>
   <% end%>
 </table>

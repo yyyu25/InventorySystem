@@ -1,15 +1,41 @@
-<div class="item-container">
-  <div class="item-card">
-
+<div class="batch-container">
+  <div class="batch-card">
     <h2>Edit Your Item</h2>
+        <form method="post" action="/batch_edit"
+      style="width: 600px; margin: 30px auto; background: #fff; padding: 25px 30px; border-radius: 8px; font-family: system-ui, sans-serif;">
+          <div class="item-row" style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: nowrap;">
+
+              <label style="min-width: 50px; font-weight: 600; margin-bottom: 20px;">Item Name:</label>
+              <input type="text" name="batch_item[]" required value="<%= @item.itemname%>" readonly
+                  style="height: 32px; width: 100px; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px;">
+
+              <label style="min-width: 50px; font-weight: 600; margin-bottom: 20px;">Quantity:</label>
+              <input type="number" name="batch_quantity[]" min="1" required value="<%= @item.quantity%>"
+                  style="height: 32px; width: 100px; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px;">
+
+              <label style="min-width: 50px; font-weight: 600; display: none;">Unit:</label>
+              <select name="batch_unit[]" required
+                      style="height: 42px; width: 100px; margin-bottom: 10px; padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px; line-height: 1;">
+              <option value="">--Select--</option>
+              <option value="piece"  <%= "selected" if @item.unit == "piece" %>>piece</option>
+              <option value="box"    <%= "selected" if @item.unit == "box" %>>box</option>
+              <option value="pack"   <%= "selected" if @item.unit == "pack" %>>pack</option>
+              <option value="bottle" <%= "selected" if @item.unit == "bottle" %>>bottle</option>
+              <option value="bag"    <%= "selected" if @item.unit == "bag" %>>bag</option>
+              <option value="kg"     <%= "selected" if @item.unit == "kg" %>>kg</option>
+              <option value="g"      <%= "selected" if @item.unit == "g" %>>g</option>
+              <option value="liter"  <%= "selected" if @item.unit == "liter" %>>liter</option>
+              <option value="set"    <%= "selected" if @item.unit == "set" %>>set</option>
+              <option value="roll"   <%= "selected" if @item.unit == "roll" %>>roll</option>
+              </select>
+          </div>
 
 
-    <form method="post" action="/edit/<%= @item%>">
-      <label>Item Name:</label>
-      <input type="text" name="item" value="<%= @item%>" readonly>
-      <label>Quantity:</label>
-      <input type="number" name="quantity" min = "1" value="<%= @quantity%>" required>
-      <input type="submit" value="submit">
+      <div style="text-align:center; margin-top: 15px;">
+        <input type="submit" value="Update"
+              style="background-color:#1565c0; color:white; border:none; border-radius:4px;
+                      padding:8px 14px; cursor:pointer; font-weight:500;">
+      </div>
     </form>
   </div>
 

@@ -1,0 +1,12 @@
+require 'active_record'
+
+ActiveRecord::Base.establish_connection(
+    adapter: 'sqlite3',
+    database: 'mydb.sqlite'
+)
+
+require_relative 'migration/202511050959_create_user'
+require_relative 'migration/202511061438_create_item'
+require_ralative 'migration/202511061900_change_password_from_user'
+
+CreateItems.migrate(:up)

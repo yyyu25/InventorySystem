@@ -6,15 +6,14 @@
   <title>Inventory System</title>
 </head>
 <body>
-  <h1>Inventory Management System</h1>
+  <h1 style="margin-left: 10px;">Inventory Management System</h1>
   <hr>
 
   <nav>
     <a href="/">Home</a> |
     <a href="/view">View Items</a> |
-    <a href="/add">Add Item</a> |
-    <a href="/batch">Bacth Add Items</a> |
-    <% if logged_in? %>
+    <a href="/batch">Add Items In Batch</a> |
+    <% if session[:user_id] %>
       <a href="/logout">Log Out</a>
     <% else %>
       <a href="/signup">Sign Up</a> |
