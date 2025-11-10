@@ -195,3 +195,6 @@ get '/logout' do
     session.clear
     redirect '/?message=Log+out+Successfully.'
 end
+
+set :bind, '0.0.0.0'
+set :port, ENV['PORT'] || 4567
