@@ -49,6 +49,7 @@ GEM
       rack (>= 3.0.0)
     rackup (2.2.1)
       rack (>= 3)
+    rake (13.3.1)
     ruby2_keywords (0.0.5)
     securerandom (0.4.1)
     sinatra (4.2.1)
@@ -84,6 +85,7 @@ DEPENDENCIES
   pg (~> 1.5)
   puma (~> 7.1)
   rackup (~> 2.2)
+  rake
   sinatra
   sinatra-activerecord
   sinatra-contrib

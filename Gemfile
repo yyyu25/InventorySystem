@@ -12,6 +12,7 @@ gem "sinatra-activerecord"
 
 gem "rackup", "~> 2.2"
 gem "puma", "~> 7.1"
+gem "rake"
 
 gem "bcrypt", "~> 3.1"
 
